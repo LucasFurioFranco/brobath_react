@@ -10,6 +10,6 @@ RUN npm install
 
 COPY . /brobath_test
 
-EXPOSE 3000
+EXPOSE 5003
 
 CMD [ "npm", "start" ]
