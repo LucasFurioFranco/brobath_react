@@ -1,15 +1,21 @@
 FROM node:latest
 
-RUN mkdir -p /brobath_test
+RUN apt update -y
+RUN apt upgrade -y
+RUN apt install nano -y
 
-WORKDIR /brobath_test
+RUN mkdir -p /app
 
-COPY package.json /brobath_test/
+WORKDIR /app
+
+COPY . .
 
 RUN npm install
 
-COPY . /brobath_test
+RUN npm install -g nodemon
 
 EXPOSE 5003
 
-CMD [ "npm", "start" ]
+#CMD [ "npm", "start" ]
+
+CMD [ "nodemon", "index.js" ]
